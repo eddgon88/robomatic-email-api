@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+./gradlew build -x test
+
+export DB_HOST=localhost
+export DB_PORT=5432
+export DB_USER=payments
+export DB_PWD=payments
+export ACTIVEMQ_ADMIN_HOST=localhost
+export ACTIVEMQ_ADMIN_PORT=61616
+export ACTIVEMQ_ADMIN_LOGIN=admin
+export ACTIVEMQ_ADMIN_PASSWORD=admin
+
+java -Duser.timezone=UTC -Dspring.profiles.active=local -jar build/libs/robomatic-email-api-1.0.0-SNAPSHOT.jar

@@ -1,0 +1,239 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>Link de Pago</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="x-apple-disable-message-reformatting" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style type="text/css">
+    /* Google font import Montserrat */
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+
+    /* Outlook link fix */
+    #outlook a {
+      padding: 0;
+    }
+
+    /* Hotmail background & line height fixes */
+    .ExternalClass {
+      width: 100% !important;
+    }
+
+    .ExternalClass,
+    .ExternalClass p,
+    .ExternalClass span,
+    .ExternalClass font,
+
+    /* Image borders & formatting */
+    img {
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+    }
+
+    a img {
+      border: none;
+    }
+
+    /* Re-style iPhone automatic links (eg. phone numbers) */
+    .appleLinksGrey a {
+      color: #919191 !important;
+      text-decoration: none !important;
+    }
+
+    @media only screen and (max-width: 400px) {
+        
+      .mobilefullwidth { 
+        width: 100% !important;
+        height: auto !important;
+        max-width: 684px !important; 
+      }
+
+      .apikey {
+        width: 300px;
+        height: auto;
+      }
+
+      .logo {
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+      }
+
+      .h1 {
+        font-size: 18px !important;
+        padding-right: 60px !important;
+        padding-left: 60px !important;
+      }
+
+      .h2 {
+        font-size: 18px !important;
+        line-height: 27px !important;
+        padding-right: 30px !important;
+        padding-left: 30px !important;
+      }
+
+      .CTA_wrap {
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+        padding-bottom: 30px !important;
+      }
+
+      .footer {
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+      }
+
+      .number_wrap {
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+      }
+
+      .unsubscribe {
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+      }
+
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+
+<body
+  style="padding:0; margin:0; -webkit-text-size-adjust:none; -ms-text-size-adjust:100%; background-color:#ffffff; font-family: 'Montserrat', sans-serif; color:#63666A;">
+
+  <!--[if mso]>
+	<style type="text/css">
+		body, table, td {font-family: Arial, Helvetica, sans-serif !important;}
+	</style>
+<![endif]-->
+
+
+
+  <!-- // FULL EMAIL -->
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+    <tr>
+
+      <!-- // LEFT SPACER CELL *** MUST HAVE A BACKGROUND COLOUR -->
+      <td style="font-size:0px; border-right: 1px #cecece solid;">&zwnj;</td>
+      <!-- LEFT SPACER CELL // -->
+
+      <!-- // MAIN CONTENT CELL -->
+      <td align="center" width="684" bgcolor="#FFFFFF">
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+          <tbody>
+
+            <!-- HEADER -->
+            <tr>
+              <td>
+                <a href="https://ibb.co/4SyYLjL"><img src="https://i.ibb.co/4SyYLjL/avatar02-ROBOMATIC.jpg" alt="avatar02-ROBOMATIC" border="0"></a>
+              </td>
+            </tr>
+
+            <!-- H1 SECTION -->
+            <tr>
+              <td class="h1" style="text-align: center; font-size:22px; font-weight: 600; color:#333333; padding-top: 50px; padding-bottom: 29px;">
+                Hola, {{nombre}}
+              </td>
+            </tr>
+
+            <!-- Paragraph SECTION -->
+            <tr>
+              <td
+                style="text-align: center; font-size: 18px; font-weight: 400; padding-left: 49px; padding-right: 49px; padding-bottom: 6px; color: #333333;">
+                ¡Gracias por comprar con <strong>{{nombre_fantasia_comercio}}</strong>!
+                <br>
+                <br>
+                Aquí está el resumen de tu compra:
+                <br>
+                <br>
+                <ul style="padding-left: 110px; padding-right: 10px; text-align:left">
+                  <li>Producto: {{producto}}</li>
+                  <li>Monto a pagar: ${{monto}}</li>
+                  <li>Vencimiento link de pago: {{fecha_expiracion}} hrs</li>
+                </ul>
+                <br>
+                Para realizar el pago, haz click en el botón
+              </td>
+            </tr>
+
+            <!-- Button SECTION -->
+            <tr>
+              <td style="text-align: center; font-size: 16px; font-weight: 700; padding-top: 40px;">
+                <a href={{link}} target="url"
+                  style="background: #26D07C; color: #fff; text-decoration: none; padding: 12px 50px;box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+                  border-radius: 5px;">PAGAR AQUÍ</a>
+              </td>
+            </tr>
+
+            <!--Closing greeting SECTION-->
+            <tr>
+              <td style="text-align:center; font-size: 16px; font-weight:600; color:#002B49; padding-top: 60px;">
+                Te saluda atentamente,
+                <br>
+                Klap
+              </td>
+            </tr>
+
+
+            <!-- Know more SECTION -->
+            <tr>
+              <td style="padding-top: 40px;">
+                <a href="https://www.klap.cl/home-comercios/ecommerce" target="#"><img src="https://i.ibb.co/0YXfsSK/conocemas.jpg" class="mobilefullwidth" width="684" style="display:block; width:100%;max-width:684px;" alt="conoce mas"></a>
+              </td>
+            </tr>
+            
+
+            <!-- RRSS SECTION -->
+            <tr>
+              <td style="padding-top: 0; height: 85px;">
+                <table border="0" cellspacing="0" cellpadding="0">
+                  <tbody>
+                    <tr>
+                      <td style="padding-left: 240px; padding-right: 60px;">
+                        <a href="https://www.facebook.com/KlapCL" target="#"><img src="https://i.ibb.co/6D0GtJK/FACEBOOK.jpg" alt="facebook"></a>
+                      </td>
+                      <td style="padding-right: 60px;">
+                        <a href="https://twitter.com/KlapCL" target="#"><img src="https://i.ibb.co/QCQ933n/TWITTER.jpg" alt="twitter"></a>
+                      </td>
+                      <td>
+                        <a href="https://www.instagram.com/klapchile/?hl=es" target="#"><img src="https://i.ibb.co/VTVGdYQ/INSTAGRAM.png" alt="instagram"></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            
+            <!-- Footer SECTION -->
+            <tr>
+              <td>
+                <img src="https://i.ibb.co/8BWyPFK/Footer.jpg" alt="horarios klap">
+              </td>
+            </tr>
+
+
+
+          </tbody>
+        </table>
+
+      </td>
+      <!-- // MAIN CONTENT CELL -->
+
+      <!-- // RIGHT SPACER CELL *** MUST HAVE A BACKGROUND COLOUR -->
+      <td bgcolor="#ffffff" style="font-size:0px; border-left: 1px #cecece solid;">&zwnj;</td>
+      <!-- RIGHT SPACER CELL // -->
+
+    </tr>
+  </table>
+  <!-- FULL EMAIL // -->
+</body>
+
+</html>

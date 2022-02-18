@@ -1,0 +1,65 @@
+server:
+  port: ${PORT:8027}
+spring:
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  datasource:                           # Spring datasource
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/payments?stringtype=unspecified
+    username: ${DB_USER}
+    password: ${DB_PWD}
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-test-query: SELECT 1   # sql for test connection
+      connection-timeout: 20000         # maximum number of milliseconds that a clients will wait for a connection
+      minimum-idle: 2                   # minimum number of idle connections maintained by HikariCP in a connection pool
+      maximum-pool-size: 10             # maximum pool size
+      idle-timeout: 10000               # maximum idle time for connection
+      max-lifetime: 30000               # maximum idle time for connection
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        connection:
+          release_mode: ON_CLOSE
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    open-in-view: false                 # AFTER_TRANSACTION
+  activemq:
+    user: ${ACTIVEMQ_ADMIN_LOGIN}
+    password: ${ACTIVEMQ_ADMIN_PASSWORD}
+    broker-url: tcp://${ACTIVEMQ_ADMIN_HOST}:${ACTIVEMQ_ADMIN_PORT}?jms.redeliveryPolicy.maximumRedeliveries=1
+
+  rest-template:
+    connect-timeout: 10000
+    read-timeout: 10000
+
+healthcheck:
+  basicAuth:
+    usr: ${HEALTHCHECK_USER}
+    pwd: ${HEALTHCHECK_PASS}
+
+constants:
+  retry:
+    url: "http://localhost:8026/retry-service-internal/v1/retry"
+    datePattern: "yyyyMMddHHmm"
+    minutesToAdd: 5
+    retryNumber: 3
+  topic: "email.send.service"
+sendgrid:
+  email:
+    email:
+    receiptFrom: "no-reply@klap.cl"
+    receiptSubject: "Generic Subject"
+  api:
+    url: "https://api.sendgrid.com/v3/mail/send"
+    apikey: "${SEND_GRID_APIKEY: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}"
+smtp:
+  emailHost: "smtp.gmail.com"
+  emailUsername: "edgar.gonzalez@robomatic-rpa.com"
+  emailPassword: "dkfmmbilirkavzaf"
+  defaultEncoding: "UTF-8"
+  port: "587"
+  private : "smtp"

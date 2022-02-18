@@ -1,0 +1,39 @@
+def excludes = [
+        '**/PaymentsEmailApiApplication*',
+        '**/healthcheck/**',
+        '**/clients/**',
+        '**/configurations/**',
+        '**/constants/**',
+        '**/commons/**',
+        '**/dtos/**',
+        '**/exceptions/**',
+        '**/models/**',
+        '**/repositories/**',
+        '**/utils/*'
+]
+
+jacocoTestReport {
+    reports {
+        xml.enabled = false
+        csv.enabled = false
+        html.enabled = true
+        html.destination(file("${buildDir}/jacocoHtml"))
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect { fileTree(dir: it, exclude: excludes) }))
+    }
+}
+
+jacocoTestCoverageVerification {
+    doFirst {
+        classDirectories.setFrom(files(classDirectories.files.collect { fileTree(dir: it, exclude: excludes) }))
+    }
+    violationRules {
+        rule {
+            enabled = true
+            limit {
+                minimum = 0.7
+            }
+        }
+    }
+}

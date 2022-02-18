@@ -1,0 +1,79 @@
+buildscript {
+	ext {
+		appVersion = '1.0.0-SNAPSHOT'
+		springCloudVersion = 'Hoxton.SR9'
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.3.7.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'eclipse'
+	id 'jacoco'
+}
+
+apply from: 'coverage.gradle'
+
+group = 'cl.robomatic.rpa.email'
+sourceCompatibility = '1.8'
+
+bootJar {
+	archiveBaseName = 'robomatic-email-api'
+	archiveVersion = "${appVersion}"
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-activemq'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'com.google.code.gson:gson:2.8.6'
+	implementation 'commons-codec:commons-codec:1.15'
+	implementation 'org.apache.commons:commons-lang3:3.11'
+	implementation 'javax.mail:mail:1.4.7'
+
+
+	runtimeOnly 'org.postgresql:postgresql'
+
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
+
+	testImplementation group: 'junit', name: 'junit', version: '4.12'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+jacoco {
+	toolVersion = "0.8.5"
+}
+
+test {
+	finalizedBy jacocoTestReport
+}
