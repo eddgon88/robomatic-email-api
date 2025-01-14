@@ -1,36 +1,41 @@
-buildscript {
-	ext {
-		appVersion = '1.0.0-SNAPSHOT'
-		springCloudVersion = 'Hoxton.SR9'
-	}
-}
-
 plugins {
-	id 'org.springframework.boot' version '2.3.7.RELEASE'
+	id 'org.springframework.boot' version '2.6.7'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-	id 'eclipse'
-	id 'jacoco'
 }
 
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'jacoco'
 apply from: 'coverage.gradle'
 
 group = 'cl.robomatic.rpa.email'
+version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
-
-bootJar {
-	archiveBaseName = 'robomatic-email-api'
-	archiveVersion = "${appVersion}"
-}
 
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	all {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
 }
 
 repositories {
 	mavenCentral()
+}
+
+bootJar {
+	archiveBaseName = 'robomatic-email-api'
+	archiveVersion = '0.0.1'
+}
+
+ext {
+	set('springCloudVersion', "2021.0.1")
+	set('log4j2.version', "2.16.0")
 }
 
 dependencies {
@@ -44,6 +49,7 @@ dependencies {
 	implementation 'commons-codec:commons-codec:1.15'
 	implementation 'org.apache.commons:commons-lang3:3.11'
 	implementation 'javax.mail:mail:1.4.7'
+	implementation 'com.google.guava:guava:11.0.2'
 
 
 	runtimeOnly 'org.postgresql:postgresql'
@@ -70,10 +76,12 @@ dependencyManagement {
 	}
 }
 
-jacoco {
-	toolVersion = "0.8.5"
+tasks.named('test') {
+	testLogging.showStandardStreams = false
+	environment "SPRING_PROFILES_ACTIVE", "test"
+	useJUnitPlatform()
 }
 
-test {
-	finalizedBy jacocoTestReport
+jacoco {
+	toolVersion = "0.8.5"
 }

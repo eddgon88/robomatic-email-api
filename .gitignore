@@ -1,6 +1,6 @@
 .gradle
 /build/
-!gradle/wrapper/gradle-wrapper.jar
+!../robomatic-core/gradle/wrapper/gradle-wrapper.jar
 
 # Eclipse
 /.classpath
